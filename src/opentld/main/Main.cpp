@@ -214,12 +214,11 @@ void Main::doWork()
 
             if(showOutput)
             {
-
-
                 CvSize size = cvSize(img->width*2,img->height*2);
                 IplImage*img2 =cvCreateImage(size,img->depth,img->nChannels);
                 cvResize(img, img2,CV_INTER_LINEAR);
                 gui->showImage(img2);
+                cvReleaseImage(&img2);
                 char key = gui->getKey();
 
                 if(key == 'q') break;
